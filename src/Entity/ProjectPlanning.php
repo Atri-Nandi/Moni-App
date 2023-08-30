@@ -26,6 +26,7 @@ class ProjectPlanning
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $notes = null;
 
+    /************************* Specific getters/setters **************************/
     
     public function getId(): string
     {

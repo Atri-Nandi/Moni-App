@@ -6,7 +6,6 @@ use App\Entity\Employee;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-
 class EmployeeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -15,12 +14,13 @@ class EmployeeRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get all the planned meetings
+     * Get all the planned meetings for an employee by email. 
+     * In case email is not provided, all meetings are returned.
      * 
-     * @param string $email Email address
-     * @param bool $currentWeek True If current week to show
+     * @param string $email       Email address of employee
+     * @param bool   $currentWeek True if the planned meetings has to be shown for current week otherwise false
      * 
-     * @return array|null List of employees
+     * @return array List of employees
      */
     public function getMeetingsByEmployee(string $email = null, bool $currentWeek = false): array
     {

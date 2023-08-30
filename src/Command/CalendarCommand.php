@@ -48,6 +48,8 @@ class CalendarCommand extends Command
      * @param InputInterface $input Input
      * @param OutputInterface $output Output
      * 
+     * @return int Command enum i.e. SUCESSS
+     * 
     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {

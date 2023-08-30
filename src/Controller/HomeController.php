@@ -28,7 +28,7 @@ class HomeController extends AbstractController
      *  
      * @param Request $request Symfony request object
      * 
-     * @return Response Symfony Reponse object     * 
+     * @return Response Symfony Reponse object
      */
     #[Route('/', name: 'home')]
     public function index(Request $request): Response

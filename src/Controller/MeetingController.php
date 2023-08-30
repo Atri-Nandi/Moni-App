@@ -31,10 +31,9 @@ class MeetingController extends AbstractController
     /**
      * This page shows the meeting details based on the employee email
      * 
-     * @param string  $id Database ID of the project planning object
+     * @param string $id Database ID of the employee object
      * 
      * @return Response Symfony Reponse object
-     * 
      */
     #[Route('/meeting-list/{id}', name: 'meeting-list')]
     public function index(string $id = ''): Response
@@ -59,7 +58,6 @@ class MeetingController extends AbstractController
      * @param string  $id      Database ID of the project planning object
      * 
      * @return Response Symfony Reponse object
-     * 
      */
     #[Route('/meeting/{id}', name: 'meeting')]
     public function meeting(Request $request, string $id = ''): Response
