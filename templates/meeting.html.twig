@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moni Calendar{% endblock %}
+
+{% block body %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+        {{ form_errors(form) }}
+        <div class="container-xxl">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+                <div class="col-sm-8">
+                  <div class="card mb-4">
+                    <div class="app-brand justify-content-center m-4">                  
+                      <h4 class="app-brand-text demo text-body fw-bolder">Moni Meeting Details</h4> <br>
+                  </div>
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="mb-3 col-md-12">
+                            {{ form_row(form.description) }}
+                          </div>
+                          <div class="mb-3 col-md-12">
+                            {{ form_row(form.notes) }}
+                          </div>
+                          <div class="mb-3 col-md-12">
+                            {{ form_row(form.startDate) }}
+                          </div>
+                          <div class="mb-3 col-md-12">
+                            {{ form_row(form.endDate) }}
+                          </div>                                                   
+                        </div>
+                        <div class="row mt-2">
+                          <div class="mb-3 col-md-2">{{ form_row(form.submit) }} </div>
+                          <div class="mb-3 col-md-1">{{ form_row(form.cancel) }} </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+{% endblock %}

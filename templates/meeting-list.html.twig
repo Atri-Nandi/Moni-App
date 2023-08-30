@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moni Calendar{% endblock %}
+
+{% block body %}
+        <div class="container-xxl">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+                <div class="col-sm-7">                    
+                    {% if employees|length == 0 or employees[0].projectPlannings|length == 0 %}
+                    <div class="card text-center">
+                      <div class="card-body">
+                        <h5 class="card-title">Moni Calendar Meeting List</h5><br><br>
+                        <p class="card-text">There is no Calendar meeting for the employee</p>
+                        <a href="{{ path('home') }}" class="btn btn-primary m-5">BACK TO HOME</a>
+                      </div>
+                      
+                    </div>
+                  {% else %}
+                  {% set employee = employees[0] %}
+                  <a href="{{ path('home') }}" class="btn btn-primary mb-4">BACK TO HOME</a>
+                    <div class="card">
+                        <div class="app-brand justify-content-center m-4">                  
+                            <h4 class="app-brand-text demo text-body fw-bolder">Moni Calendar Meeting List</h4>
+                        </div>
+                        <h5 class="text-center">{{ employee.email }}</h5>
+                        <div class="table-responsive mt-4">                
+                          <table class="table table-hover">
+                            <thead>
+                              <tr bgcolor="#f1f1f1">
+                                <th class="col-sm-11">Meetings</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                              {% for meeting in employee.projectPlannings %}
+                                <tr>
+                                  <td>
+                                    <table>
+                                      <tr>
+                                        <td style="width:200px"><b>Title of the meeting</b></td>
+                                        <td class="col-sm-1"> : </td>
+                                        <td>{{ meeting.description }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="width:200px"><b>Consultant </b></td>
+                                        <td class="col-sm-1"> : </td>
+                                        <td>{{ meeting.emp.fullName }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="width:200px"><b>Start Date</b></td>
+                                        <td class="col-sm-1"> : </td>
+                                        <td>{{ meeting.startDate|date('d-m-Y h:i:s') }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="width:200px"><b>End Date</b></td>
+                                        <td class="col-sm-1"> : </td>
+                                        <td>{{ meeting.endDate|date('d-m-Y h:i:s') }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="width:200px"><b>Meeting Note</b></td>
+                                        <td class="col-sm-1"> : </td>
+                                        <td>{{ meeting.notes }}</td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                  <td>
+                                    <a class="btn btn-primary" href="{{ path('meeting', {'id': meeting.id})}}">EDIT</a>                                                                     
+                                  </td>
+                                </tr>                        
+                              {% endfor %}                      
+                            </tbody>
+                          </table>                 
+                        </div>
+                      </div>
+                      {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}
